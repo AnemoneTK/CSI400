@@ -1,6 +1,9 @@
 <?php
-    $serverName = "localhost\LAB5SQL2019";
-    // $connectioninfo = array("Database"=>"5-903-11\LAB5SQL2019\CSI206_65039089C", "UID"=>"sa", "PWD"=>"123456789");
+    // คอมมอ 
+    // $serverName = "localhost\LAB5SQL2019";
+
+    // Computer
+    $serverName = "DESKTOP-KSUDR89";
     $connectioninfo = array("Database"=>"CSI206_65039089C", "UID"=>"sa", "PWD"=>"123456789");
     $conn = sqlsrv_connect($serverName, $connectioninfo);
 

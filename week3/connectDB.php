@@ -37,6 +37,7 @@
 
             }
             echo ("</table>");
+            exit;
         }
 
         if($result === false){

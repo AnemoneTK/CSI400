@@ -64,7 +64,8 @@
                 if(isset($_POST['cusBuyProduct'])){
                     $sql = "select c.C_ID,c.C_NAME,P_NAME
                     from CUSTOMER c, PRODUCT p, ORDERED o, ORDER_DETAIL od
-                    where  c.C_ID = o.C_ID and o.ORDER_ID = od.ORDER_ID and od.P_ID = p.P_ID";
+                    where  c.C_ID = o.C_ID and o.ORDER_ID = od.ORDER_ID and od.P_ID = p.P_ID
+                    order by c.C_ID";
                     $result = sqlsrv_query($conn,$sql); ?>
                         <thead class="table-secondary">
                             <tr>

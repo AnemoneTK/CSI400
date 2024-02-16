@@ -1,9 +1,9 @@
 <?php
     // คอมมอ 
-    // $serverName = "localhost\LAB5SQL2019";
+    $serverName = "localhost\LAB5SQL2019";
 
     // Computer
-    $serverName = "DESKTOP-KSUDR89";
+    // $serverName = "DESKTOP-KSUDR89";
     $connectioninfo = array("Database"=>"CSI206_65039089C", "UID"=>"sa", "PWD"=>"123456789");
     $conn = sqlsrv_connect($serverName, $connectioninfo);
 
@@ -40,7 +40,12 @@
             if($conn){
                 if(isset($_POST['showCustomer'])){
                     $sql = "select * from Customer";
-                    $result = sqlsrv_query($conn,$sql); ?>
+                    $param = array();
+                    $option = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
+                    $result = sqlsrv_query($conn,$sql,$param,$option); 
+                    $resH = sqlsrv_query($conn,$sql,$param,$option);
+                    $row = sqlsrv_num_row($result);
+                    ?>
                         <thead class="table-secondary">
                             <tr>
                                 <td scope="col">รหัสลูกค้า</td>
@@ -62,7 +67,7 @@
                 <?php }
 
                 if(isset($_POST['cusBuyProduct'])){
-                    $sql = "select c.C_ID,c.C_NAME,P_NAME
+                    $sql = "SELECT c.C_ID,c.C_NAME,P_NAME
                     from CUSTOMER c, PRODUCT p, ORDERED o, ORDER_DETAIL od
                     where  c.C_ID = o.C_ID and o.ORDER_ID = od.ORDER_ID and od.P_ID = p.P_ID
                     order by c.C_ID";

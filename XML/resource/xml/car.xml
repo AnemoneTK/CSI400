@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cars>
+  <Car No="1">
+    <Brand>Honda</Brand>
+    <Color>Silver</Color>
+    <Price>498000</Price>
+  </Car>
+  <Car No="2">
+    <Brand>Toyota</Brand>
+    <Color>White</Color>
+    <Price>398000</Price>
+  </Car>
+  <Car No="3">
+    <Brand>Benz</Brand>
+    <Color>Black</Color>
+    <Price>1688000</Price>
+  </Car>
+</Cars>

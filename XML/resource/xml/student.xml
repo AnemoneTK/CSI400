@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Students>
+  <Student No="1">
+    <ID>65039089</ID>
+    <Name>Narisara</Name>
+    <Major>CSI</Major>
+  </Student>
+  <Student No="2">
+    <ID>65041785</ID>
+    <Name>Phattarapong</Name>
+    <Major>CSI</Major>
+  </Student>
+  <Student No="3">
+    <ID>65054917 </ID>
+    <Name>Kittipat</Name>
+    <Major>CSI</Major>
+  </Student>
+  <Student No="4">
+    <ID>65054924 </ID>
+    <Name>Piyakrit</Name>
+    <Major>CSI</Major>
+  </Student>
+  <Student No="5">
+    <ID>65051645 </ID>
+    <Name>Pitchaya</Name>
+    <Major>CSI</Major>
+  </Student>
+  <Student No="6">
+    <ID>65073814 </ID>
+    <Name>Pichayapa</Name>
+    <Major>CSI</Major>
+  </Student>
+  <Student No="7">
+    <ID>65076751 </ID>
+    <Name>Athitaya</Name>
+    <Major>CSI</Major>
+  </Student>
+</Students>

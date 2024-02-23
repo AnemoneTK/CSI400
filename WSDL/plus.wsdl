@@ -1,0 +1,72 @@
+<?xml version ='1.0' encoding ='UTF-8' ?> 
+<definitions name='plus' 
+  targetNamespace='http://example.org/plus' 
+  xmlns:tns=' http://example.org/plus ' 
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' 
+  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+  xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+<message name='paramRequest'> 
+  <part name='num1' type='xsd:float'/> 
+  <part name='num2' type='xsd:float'/>
+</message> 
+
+<message name='paramResponse'> 
+  <part name='Result' type='xsd:float'/> 
+</message> 
+
+<portType name='plusPortType'> 
+  <operation name='plus'> 
+    <input message='tns:paramRequest'/> 
+    <output message='tns:paramResponse'/> 
+  </operation> 
+
+  <operation name='minus'> 
+    <input message='tns:paramRequest'/> 
+    <output message='tns:paramResponse'/> 
+  </operation> 
+</portType> 
+
+
+<binding name='plusBinding' type='tns:plusPortType'> 
+  <soap:binding style='rpc' 
+    transport='http://schemas.xmlsoap.org/soap/http'/> 
+  <operation name='plus'> 
+    <soap:operation soapAction='urn:xmethods-delayed-quotes#plus'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation> 
+
+  <operation name='minus'> 
+    <soap:operation soapAction='urn:xmethods-delayed-quotes#minus'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation>
+</binding> 
+
+
+<service name='plusService'> 
+  <port name='plusPort' binding='plusBinding'> 
+    <soap:address location='http://localhost/CSI400_65039089/WSDL/plus_server.php'/> 
+  </port> 
+</service> 
+<service name='minusService'> 
+  <port name='minusPort' binding='plusBinding'> 
+    <soap:address location='http://localhost/CSI400_65039089/WSDL/plus_server.php'/> 
+  </port> 
+</service> 
+</definitions> 

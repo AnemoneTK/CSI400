@@ -17,7 +17,7 @@
   <part name='Result' type='xsd:float'/> 
 </message> 
 
-<portType name='plusPortType'> 
+<portType name='calculatePortType'> 
   <operation name='plus'> 
     <input message='tns:paramRequest'/> 
     <output message='tns:paramResponse'/> 
@@ -40,7 +40,7 @@
 </portType> 
 
 
-<binding name='plusBinding' type='tns:plusPortType'> 
+<binding name='calculateBinding' type='tns:calculatePortType'> 
   <soap:binding style='rpc' 
     transport='http://schemas.xmlsoap.org/soap/http'/> 
   <operation name='plus'> 
@@ -94,23 +94,23 @@
 
 
 <service name='plusService'> 
-  <port name='plusPort' binding='plusBinding'> 
-    <soap:address location='http://localhost/CSI400_65039089/WSDL/server/plus_server.php'/> 
+  <port name='plusPort' binding='calculateBinding'> 
+    <soap:address location='http://localhost/CSI400/WSDL/server/server.php'/> 
   </port> 
 </service> 
 <service name='minusService'> 
-  <port name='minusPort' binding='plusBinding'> 
-    <soap:address location='http://localhost/CSI400_65039089/WSDL/server/plus_server.php'/> 
+  <port name='minusPort' binding='calculateBinding'> 
+    <soap:address location='http://localhost/CSI400/WSDL/server/server.php'/> 
   </port> 
 </service> 
 <service name='multipleService'> 
-  <port name='multiplePort' binding='plusBinding'> 
-    <soap:address location='http://localhost/CSI400_65039089/WSDL/server/plus_server.php'/> 
+  <port name='multiplePort' binding='calculateBinding'> 
+    <soap:address location='http://localhost/CSI400/WSDL/server/server.php'/> 
   </port> 
 </service> 
 <service name='divideService'> 
-  <port name='dividePort' binding='plusBinding'> 
-    <soap:address location='http://localhost/CSI400_65039089/WSDL/server/plus_server.php'/> 
+  <port name='dividePort' binding='calculateBinding'> 
+    <soap:address location='http://localhost/CSI400/WSDL/server/server.php'/> 
   </port> 
 </service> 
 </definitions> 

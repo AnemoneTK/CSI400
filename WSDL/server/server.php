@@ -13,7 +13,7 @@
     	return $num3/$num4; 
     }
     
-    $server = new SoapServer("http://localhost/CSI400_65039089/WSDL/server/plus.wsdl");
+    $server = new SoapServer("http://localhost/CSI400/WSDL/server/calculate.wsdl");
     
     $server->addFunction("plus");
     $server->addFunction("minus");

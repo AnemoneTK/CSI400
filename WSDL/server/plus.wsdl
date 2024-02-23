@@ -27,6 +27,16 @@
     <input message='tns:paramRequest'/> 
     <output message='tns:paramResponse'/> 
   </operation> 
+
+  <operation name='multiple'> 
+    <input message='tns:paramRequest'/> 
+    <output message='tns:paramResponse'/> 
+  </operation> 
+
+  <operation name='divide'> 
+    <input message='tns:paramRequest'/> 
+    <output message='tns:paramResponse'/> 
+  </operation> 
 </portType> 
 
 
@@ -56,17 +66,51 @@
         encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
     </output> 
   </operation>
+
+  <operation name='multiple'> 
+    <soap:operation soapAction='urn:xmethods-delayed-quotes#multiple'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation>
+
+  <operation name='divide'> 
+    <soap:operation soapAction='urn:xmethods-delayed-quotes#divide'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation>
 </binding> 
 
 
 <service name='plusService'> 
   <port name='plusPort' binding='plusBinding'> 
-    <soap:address location='http://localhost/CSI400_65039089/WSDL/plus_server.php'/> 
+    <soap:address location='http://localhost/CSI400_65039089/WSDL/server/plus_server.php'/> 
   </port> 
 </service> 
 <service name='minusService'> 
   <port name='minusPort' binding='plusBinding'> 
-    <soap:address location='http://localhost/CSI400_65039089/WSDL/plus_server.php'/> 
+    <soap:address location='http://localhost/CSI400_65039089/WSDL/server/plus_server.php'/> 
+  </port> 
+</service> 
+<service name='multipleService'> 
+  <port name='multiplePort' binding='plusBinding'> 
+    <soap:address location='http://localhost/CSI400_65039089/WSDL/server/plus_server.php'/> 
+  </port> 
+</service> 
+<service name='divideService'> 
+  <port name='dividePort' binding='plusBinding'> 
+    <soap:address location='http://localhost/CSI400_65039089/WSDL/server/plus_server.php'/> 
   </port> 
 </service> 
 </definitions> 

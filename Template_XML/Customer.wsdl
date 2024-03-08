@@ -26,6 +26,9 @@
     <input message='paraRequest'/> 
     <output message='paraResponse'/> 
   </operation>
+  <operation name='showEMP'> 
+    <output message='paraResponse'/> 
+  </operation>
 </portType> 
 
 <binding name='requestXMLBinding' type='tns:parameterPortType'> 
@@ -42,14 +45,29 @@
   </operation> 
 </binding> 
 
+<binding name='showEMPBinding' type='tns:parameterPortType'> 
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+  <operation name='showEMP'> 
+    <soap:operation soapAction='showEMP'/> 
+  </operation> 
+</binding> 
+
 <service name='requestXMLService'> 
   <port name='parameterPort' binding='tns:requestXMLBinding'> 
-    <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/> 
+    <soap:address location='http://localhost/CSI400_65039089/Template_XML/Customer_Server.php'/> 
+    <!-- <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/>  -->
   </port> 
 </service>
 <service name='findXMLService'> 
   <port name='parameterPort' binding='tns:findXMLBinding'> 
-    <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/> 
+    <soap:address location='http://localhost/CSI400_65039089/Template_XML/Customer_Server.php'/> 
+    <!-- <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/>  -->
+  </port> 
+</service>
+<service name='showEMPService'> 
+  <port name='parameterPort' binding='tns:showEMPBinding'> 
+    <soap:address location='http://localhost/CSI400_65039089/Template_XML/Customer_Server.php'/> 
+    <!-- <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/>  -->
   </port> 
 </service>
 

@@ -1,4 +1,20 @@
 <?php
+	//Connet DB
+	function ShowEMP(){
+		include('Connect.php');
+		if($conn){
+			$sql = "select * from EMP";
+			$result = sqlsrv_query($conn, $sql);
+			$str = [];
+			while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)){
+				$str[] = $row;
+			}
+			return json_encode($str);
+		}else{
+			echo "Can not Connect";
+		}
+	}
+
 	// Use File Customer.xml
 	function findXML($para){
 		$xml = simplexml_load_file("Customer.xml");
@@ -22,9 +38,11 @@
 
 	}
     
-    $server = new SoapServer("http://localhost/CSI400/Template_XML/Customer.wsdl");
+    $server = new SoapServer("http://localhost/CSI400_65039089/Template_XML/Customer.wsdl");
+    // $server = new SoapServer("http://localhost/CSI400/Template_XML/Customer.wsdl");
 	$server->addFunction("findXML");  // Add Function to Server
 	$server->addFunction("requestXML");
+	$server->addFunction("ShowEMP");
     
     $server->handle();    
 ?>

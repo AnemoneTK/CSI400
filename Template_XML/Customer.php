@@ -31,4 +31,15 @@
 		$result = $client->ShowEMP();
 		print var_dump($result);
 	}
+	if($_POST['Submit'] == "AddEMP"){
+		include("Connect.php");
+		// $sql = "insert into EMP(empno,ename) values('".$empno."', '".$ename."')";
+		$sql = "insert into EMP(empno,ename) values('222', '222')";
+		$result = sqlsrv_query($conn, $sql);
+	}
+	if($_POST['Submit'] == "DeleteEMP"){
+		include("Connect.php");
+		$sql = "Delete EMP where empno = '222'";
+		$result = sqlsrv_query($conn, $sql);
+	}
 ?>

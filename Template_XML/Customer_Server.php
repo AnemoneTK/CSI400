@@ -1,5 +1,16 @@
 <?php
 	//Connet DB
+	function addEMP($empno, $ename){
+		$sql = "insert into EMP(empno,ename) values('".$empno."', '".$ename."')";
+		$result = sqlsrv_query($conn, $sql);
+		return $result;
+	}
+	function deleteEMP($empno, $ename){
+		$sql = "insert into EMP(empno,ename) values('".$empno."', '".$ename."')";
+		$result = sqlsrv_query($conn, $sql);
+		return $result;
+	}
+
 	function ShowEMP(){
 		include('Connect.php');
 		if($conn){
@@ -43,6 +54,8 @@
 	$server->addFunction("findXML");  // Add Function to Server
 	$server->addFunction("requestXML");
 	$server->addFunction("ShowEMP");
+	$server->addFunction("addEMP");
+	
     
     $server->handle();    
 ?>

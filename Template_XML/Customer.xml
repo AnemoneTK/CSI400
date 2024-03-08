@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootCustomers>
+  <Customer>
+    <cID>55111111</cID>
+    <cName>สมหวัง   ขยันมาก</cName>
+    <cTel>081-000-1111</cTel>
+  </Customer>
+  <Customer>
+    <cID>55222222</cID>
+    <cName>สมควร  ขยันน้อย</cName>
+    <cTel>082-111-2222</cTel>
+  </Customer>
+  <Customer>
+    <cID>55333333</cID>
+    <cName>สมชาย   ใจดี</cName>
+    <cTel>083-222-3333</cTel>
+  </Customer>
+</RootCustomers>

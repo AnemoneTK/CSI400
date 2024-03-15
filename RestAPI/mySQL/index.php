@@ -50,17 +50,20 @@ $db = new database();
                     <input type="text" name="sal" id="sal" class="form-control-lg col" placeholder="เงินเดือน">
                 </div>
             </div>
-           <div class="row col-8 mt-4">
-             <button type="submit" class="btn btn-success col-3 rounded-0" name="Insert">
+           <div class="row col-8 mt-4 d-flex flex-row align-items-center justify-content-center ">
+             <button type="submit" class="btn btn-success col-2 rounded-0" name="Insert">
                 <i class="bi bi-plus-circle me-3"></i>Add new
             </button>
-            <button type="submit" class="btn btn-info col-3 rounded-0" name="ShowAll">
+             <button type="submit" class="btn btn-primary col-2 rounded-0" name="Update">
+                <i class="bi bi-file-earmark-arrow-up me-3"></i>Update
+            </button>
+            <button type="submit" class="btn btn-info col-2 rounded-0" name="ShowAll">
                 <i class="bi bi-eye me-3"></i>Show All
             </button>
-            <button type="submit" class="btn btn-warning col-3 rounded-0" name="Search">
+            <button type="submit" class="btn btn-warning col-2 rounded-0" name="Search">
                 <i class="bi bi-search me-3"></i>Search ID
             </button>
-            <button type="submit" class="btn btn-danger col-3 rounded-0" name="Delete">
+            <button type="submit" class="btn btn-danger col-2 rounded-0" name="Delete">
                 <i class="bi bi-trash me-3"></i>Delete
             </button>
            </div>
@@ -128,32 +131,61 @@ $db = new database();
                 $sal = $_POST['sal'];
                 
                 if($empno == "" || $ename == "" || $sal == ""){ ?>
-                    <div class="text-center fs-1 text-danger">กรุณากรอกข้อมูลรหัสพนักงานให้ครบถ้วน</div>
+                    <div class="text-center fs-2 text-danger">กรุณากรอกข้อมูลรหัสพนักงานให้ครบถ้วน</div>
                 <?php }else{
                     $db->empno = $empno;
                     $db->ename = $ename;
                     $db->sal = $sal;
-
-                    $result = json_decode($db->delete());
-                    if($result){ ?>
-                     <div class="text-center fs-1 text-danger">ลบข้อมูลพนักงานหมายเลข <?php echo $empno;?> เรียบร้อยแล้ว</div>
-                    <?php } else{ ?>
-                        <div class="text-center fs-1 text-danger">ไม่พบข้อมูลพนักงานหมายเลข <?php echo $empno;?></div>
+                  
+                    $check = ($db->search());
+                    if($check != []){ ?>
+                        <div class="text-center fs-2 text-danger">มีข้อมูลพนักงานหมายเลข <?php echo $empno;?> อยู่แล้ว</div>
+                    <?php } else{
+                        $result = ($db->insert());
+                    ?>
+                            <div class="text-center fs-2 text-danger">เพิ่มข้อมูลพนักงาน <?php echo $empno;?> เรียบร้อยแล้ว</div>
                     <?php }
                     }
-                }
+                    }
+
+               if(isset($_POST['Update'])){
+                $empno = $_POST['empno'];
+                $ename = $_POST['ename'];
+                $sal = $_POST['sal'];
+                
+                if($empno == "" || $ename == "" || $sal == ""){ ?>
+                    <div class="text-center fs-2 text-danger">กรุณากรอกข้อมูลรหัสพนักงานให้ครบถ้วน</div>
+                <?php }else{
+                    $db->empno = $empno;
+                    $db->ename = $ename;
+                    $db->sal = $sal;
+                  
+                    $check = ($db->search());
+                    if($check == []){ ?>
+                        <div class="text-center fs-2 text-danger">ไม่พบข้อมูลพนักงานหมายเลข <?php echo $empno;?></div>
+                    <?php } else{
+                        $result = ($db->update());
+                    ?>
+                            <div class="text-center fs-2 text-danger">อัปเดตข้อมูลพนักงาน <?php echo $empno;?> เรียบร้อยแล้ว</div>
+                    <?php }
+                    }
+                    }
+                
                if(isset($_POST['Delete'])){
                 $empno = $_POST['empno'];
                 
                 if($empno == ""){ ?>
-                    <div class="text-center fs-1 text-danger">กรุณากรอกรหัสพนักงานที่ต้องการลบข้อมูล</div>
+                    <div class="text-center fs-2 text-danger">กรุณากรอกรหัสพนักงานที่ต้องการลบข้อมูล</div>
                 <?php }else{
                     $db->empno = $empno;
-                    $result = ($db->delete());
-                    if(!$result){ ?>
-                        <div class="text-center fs-1 text-danger">ไม่พบข้อมูลพนักงานหมายเลข <?php echo $empno;?></div>
-                    <?php } else{ ?>
-                        <div class="text-center fs-1 text-danger">ลบข้อมูลพนักงานหมายเลข <?php echo $empno;?> เรียบร้อยแล้ว</div>
+                    $check = ($db->search());
+                    
+                    if($check == []){ ?>
+                        <div class="text-center fs-2 text-danger">ไม่พบข้อมูลพนักงานหมายเลข <?php echo $empno;?></div>
+                    <?php } else{ 
+                        $result = ($db->delete());
+                    ?>
+                        <div class="text-center fs-2 text-danger">ลบข้อมูลพนักงานหมายเลข <?php echo $empno;?> เรียบร้อยแล้ว</div>
 
                     <?php }
                     }

@@ -45,22 +45,24 @@ class database {
         return null;
     }
     public function insert(){
-        $sql = "INSERT into emp(empno, ename, sal) Values(".$this->empno.",'".$this->ename."',".$this->sal.")";
+        $sql = "INSERT INTO EMP(empno, ename, sal) Values(:empno, :ename, :sal)";
         $stmt = $this->pdo->prepare($sql);
-        // echo $sql;
+        $stmt->bindParam(":empno", $this->empno);
+        $stmt->bindParam(":ename", $this->ename);
+        $stmt->bindParam(":sal", $this->sal);
         if($stmt->execute()){
-            // $data = $stmt->fetchAll();
             return true;
         }
         printf("Error : %s.\n", $stmt->error);
         return null;
     }
     public function update(){
-        $sql = "UPDATE emp set ename= '".$this->ename."', sal=".$this->sal." WHERE empno=".$this->empno." ";
+        $sql = "UPDATE emp set ename=:ename , sal=:sal WHERE empno=:empno ";
         $stmt = $this->pdo->prepare($sql);
-        // echo $sql;
+        $stmt->bindParam(":ename", $this->ename);
+        $stmt->bindParam(":sal", $this->sal);
+        $stmt->bindParam(":empno", $this->empno);
         if($stmt->execute()){
-            // $data = $stmt->fetchAll();
             return true;
         }
         printf("Error : %s.\n", $stmt->error);

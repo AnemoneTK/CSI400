@@ -33,7 +33,7 @@ $db = new database();
 <body style="font-family: 'Prompt', sans-serif;">
     <div class="warper bg-dark d-flex flex-column align-items-center justify-content-around p-5 " style="height: 100dvh;">
         <div class="row col-12 d-flex align-items-center">
-            <h1 class="text-center fw-bolder text-white mb-5">ข้อมูลลูกค้า</h1>
+            <h1 class="text-center fw-bolder text-white mb-5">ข้อมูลพนักงาน</h1>
         </div>
         <form method="POST" class="col-8 h-auto d-flex flex-column align-items-center justify-content-center">
             <div class="row col-5 d-flex flex-column align-items-center justify-content-center">
@@ -131,7 +131,7 @@ $db = new database();
                 $sal = $_POST['sal'];
                 
                 if($empno == "" || $ename == "" || $sal == ""){ ?>
-                    <div class="text-center fs-2 text-danger">กรุณากรอกข้อมูลรหัสพนักงานให้ครบถ้วน</div>
+                    <div class="text-center fs-2 text-danger">กรุณากรอกข้อมูลพนักงานให้ครบถ้วน</div>
                 <?php }else{
                     $db->empno = $empno;
                     $db->ename = $ename;
@@ -154,7 +154,7 @@ $db = new database();
                 $sal = $_POST['sal'];
                 
                 if($empno == "" || $ename == "" || $sal == ""){ ?>
-                    <div class="text-center fs-2 text-danger">กรุณากรอกข้อมูลรหัสพนักงานให้ครบถ้วน</div>
+                    <div class="text-center fs-2 text-danger">กรุณากรอกข้อมูลพนักงานให้ครบถ้วน</div>
                 <?php }else{
                     $db->empno = $empno;
                     $db->ename = $ename;

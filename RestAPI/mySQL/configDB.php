@@ -22,7 +22,7 @@ class database {
         $this->pdo = $conn;
     }
 
-    public function read(){
+    public function showAll(){
         $sql = "select * from emp";
         $stmt = $this->pdo->prepare($sql);
 
@@ -33,8 +33,8 @@ class database {
         printf("Error : %s.\n", $stmt->error);
         return null;
     }
-    public function read_condition(){
-        $sql = "select * from emp where ename ='".$this->ename."'";
+    public function search(){
+        $sql = "select * from emp where empno = ".$this->empno." ";
         $stmt = $this->pdo->prepare($sql);
 
         if($stmt->execute()){
@@ -67,11 +67,10 @@ class database {
         return null;
     }
     public function delete(){
-        $sql = "DELETE emp where empno=".$this->empno." ";
+        $sql = "DELETE FROM EMP WHERE empno = :empno ";
         $stmt = $this->pdo->prepare($sql);
-        // echo $sql;
+        $stmt->bindParam(":empno", $this->empno);
         if($stmt->execute()){
-            // $data = $stmt->fetchAll();
             return true;
         }
         printf("Error : %s.\n", $stmt->error);

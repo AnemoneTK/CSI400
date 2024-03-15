@@ -1,0 +1,113 @@
+<?xml version ='1.0' encoding ='UTF-8' ?> 
+
+<definitions name='XML' 
+  targetNamespace='http://example.org/XML' 
+  xmlns:tns=' http://example.org/XML ' 
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' 
+  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+  xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+<message name='addparaRequest'>
+  <part name='param1' type='xsd:String'/> 
+  <part name='param2' type='xsd:String'/> 
+</message> 
+<message name='paraRequest'>
+  <part name='param' type='xsd:String'/> 
+</message> 
+
+<message name='paraResponse'> 
+  <part name='result' type='xsd:String'/> 
+</message> 
+
+<portType name='parameterPortType'> 
+  <operation name='requestXML'> 
+    <output message='paraResponse'/> 
+  </operation>
+  <operation name='findXML'> 
+    <input message='paraRequest'/> 
+    <output message='paraResponse'/> 
+  </operation>
+  
+  <operation name='deleteEMP'> 
+    <input message='paraRequest'/> 
+    <output message='paraResponse'/> 
+  </operation>
+
+  <operation name='addEMP'> 
+    <input message='addparaRequest'/> 
+    <output message='paraResponse'/> 
+  </operation>
+
+  <operation name='showEMP'> 
+    <output message='paraResponse'/> 
+  </operation>
+</portType> 
+
+<binding name='requestXMLBinding' type='tns:parameterPortType'> 
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+  <operation name='requestXML'> 
+    <soap:operation soapAction='requestXML'/> 
+  </operation> 
+</binding> 
+
+<binding name='findXMLBinding' type='tns:parameterPortType'> 
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+  <operation name='findXML'> 
+    <soap:operation soapAction='findXML'/> 
+  </operation> 
+</binding> 
+
+<binding name='showEMPBinding' type='tns:parameterPortType'> 
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+  <operation name='showEMP'> 
+    <soap:operation soapAction='showEMP'/> 
+  </operation> 
+</binding> 
+<binding name='deleteEMPBinding' type='tns:parameterPortType'> 
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+  <operation name='deleteEMP'> 
+    <soap:operation soapAction='deleteEMP'/> 
+  </operation> 
+</binding> 
+<binding name='addEMPBinding' type='tns:parameterPortType'> 
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+  <operation name='addEMP'> 
+    <soap:operation soapAction='addEMP'/> 
+  </operation> 
+</binding> 
+
+<service name='requestXMLService'> 
+  <port name='parameterPort' binding='tns:requestXMLBinding'> 
+    <!-- <soap:address location='http://localhost/CSI400_65039089/Template_XML/Customer_Server.php'/>  -->
+    <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/> 
+  </port> 
+</service>
+<service name='findXMLService'> 
+  <port name='parameterPort' binding='tns:findXMLBinding'> 
+    <!-- <soap:address location='http://localhost/CSI400_65039089/Template_XML/Customer_Server.php'/>  -->
+    <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/> 
+  </port> 
+</service>
+
+<service name='showEMPService'> 
+  <port name='parameterPort' binding='tns:showEMPBinding'> 
+    <!-- <soap:address location='http://localhost/CSI400_65039089/Template_XML/Customer_Server.php'/>  -->
+    <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/> 
+  </port> 
+</service>
+<service name='deleteEMPService'> 
+  <port name='parameterPort' binding='tns:deleteEMPBinding'> 
+    <!-- <soap:address location='http://localhost/CSI400_65039089/Template_XML/Customer_Server.php'/>  -->
+    <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/> 
+  </port> 
+</service>
+<service name='addEMPService'> 
+  <port name='parameterPort' binding='tns:addEMPBinding'> 
+    <!-- <soap:address location='http://localhost/CSI400_65039089/Template_XML/Customer_Server.php'/>  -->
+    <soap:address location='http://localhost/CSI400/Template_XML/Customer_Server.php'/> 
+  </port> 
+</service>
+
+</definitions>

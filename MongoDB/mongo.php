@@ -78,11 +78,27 @@ if(!$conn){
                     }else{
                         $query = new MongoDB\Driver\Query(["empno"=>$empno]);
                     }
-                    $result =$conn->executeQuery("CSI206Lab.EMP",$query);
-                    foreach($result as $row){?>
-                        <div class="text-center fs-2"><?php echo $row->empno." ".$row->ename; ?></div>
+
+                    $result =$conn->executeQuery("CSI206Lab.EMP",$query); ?>
+                    <table class="table table-striped m-0 p-0">
+                    <thead class="fs-4">
+                        <tr>
+                            <th class="col-3">รหัสพนักงาน</th>
+                            <th class="col">ชื่อพนักงาน</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-5">
+                        <?php 
+                            foreach ($result as $row) {
+                        ?>
+                        <tr>
+                            <td class="col-3"><?php echo $row->empno; ?></td>
+                            <td class="col"><?php echo $row->ename;?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
                     <?php }
-                }
                 if(isset($_POST['add'])){
                     if($empno=="" || $ename==""){ ?>
                         <div class="text-center fs-2 text-danger">กรุณากรอกข้อมูลพนักงานให้ครบถ้วน</div>

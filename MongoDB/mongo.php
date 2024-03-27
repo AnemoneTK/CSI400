@@ -45,11 +45,11 @@ if(!$conn){
         </div>
         <form method="POST" class="col-8 h-auto d-flex flex-column align-items-center justify-content-center">
             <div class="row col-5 d-flex flex-column align-items-center justify-content-center">
-                <div class="d-flex flex-row align-items-center justify-content-center col-12 p-0">
+                <div class="d-flex flex-row align-items-center justify-content-center col-12 p-0 mb-2">
                     <div class="col-3 text-white text-end me-3">รหัสพนักงาน :</div>
                     <input type="text" name="empno" id="empno" class="form-control-lg col" placeholder="รหัสพนักงาน">
                 </div>
-                <div class="d-flex flex-row align-items-center justify-content-center col-12 p-0">
+                <div class="d-flex flex-row align-items-center justify-content-center col-12 p-0 mb-2">
                     <div class="col-3 text-white text-end me-3">ชื่อพนักงาน :</div>
                     <input type="text" name="ename" id="ename" class="form-control-lg col" placeholder="ชื่อพนักงาน">
                 </div>
@@ -70,7 +70,7 @@ if(!$conn){
             </button>
            </div>
         </form>
-        <div class="row col-6 border border-2 rounded-1 bg-white mt-3 d-flex align-items-center justify-content-center p-0" style="min-height: 300px;">
+        <div class="row col-4 border border-2 rounded-1 bg-white mt-3 d-flex align-items-center justify-content-center p-0" style="min-height: 300px;">
                <?php 
                 if(isset($_POST['search'])){
                     if($empno == ""){
@@ -83,8 +83,8 @@ if(!$conn){
                     <table class="table table-striped m-0 p-0">
                     <thead class="fs-4">
                         <tr>
-                            <th class="col-3">รหัสพนักงาน</th>
-                            <th class="col">ชื่อพนักงาน</th>
+                            <th class="col-6">รหัสพนักงาน</th>
+                            <th class="col-6">ชื่อพนักงาน</th>
                         </tr>
                     </thead>
                     <tbody class="fs-5">
@@ -92,8 +92,8 @@ if(!$conn){
                             foreach ($result as $row) {
                         ?>
                         <tr>
-                            <td class="col-3"><?php echo $row->empno; ?></td>
-                            <td class="col"><?php echo $row->ename;?></td>
+                            <td class="col-6"><?php echo $row->empno; ?></td>
+                            <td class="col-6"><?php echo $row->ename;?></td>
                         </tr>
                         <?php } ?>
                     </tbody>
